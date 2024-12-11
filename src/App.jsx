@@ -1,8 +1,14 @@
-import './App.css'
+import { useState } from "react";
+import { requestToGroqAI } from "./utils/groq";
+import { Light as SyntaxHighlight } from 'react-syntax-highlighter'
+import './App.css';
 
 function App() {
-  const handleSubmit = () => {
-    console.log(content.value)
+  const [data, setData] = useState("");
+
+  const handleSubmit = async () => {
+    const ai = await requestToGroqAI(content.value)
+    setData(ai);
   }
 
   return (
@@ -22,6 +28,11 @@ function App() {
           Kirim
         </button>
       </form>
+
+      <SyntaxHighlight language="swift" >
+        {data}
+      </SyntaxHighlight>
+
     </main>
   );
 }
