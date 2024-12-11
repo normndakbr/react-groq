@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { requestToGroqAI } from "./utils/groq";
 import { Light as SyntaxHighlight } from 'react-syntax-highlighter'
+import { darcula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import './App.css';
 
 function App() {
@@ -12,9 +13,9 @@ function App() {
   }
 
   return (
-    <main className='flex flex-col min-h-[80vh] justify-center items-center'>
+    <main className='flex flex-col min-h-[80vh] justify-center items-center max-w-xl w-full mx-auto'>
       <h1 className='text-4xl text-indigo-500'>Hello World</h1>
-      <form className='flex flex-col gap-4 py-4'>
+      <form className='flex flex-col gap-4 py-4 w-full'>
         <input
           placeholder='ketik permintaan disini..'
           className='py-2 px-4 text-md rounded-md'
@@ -29,9 +30,13 @@ function App() {
         </button>
       </form>
 
-      <SyntaxHighlight language="swift" >
-        {data}
-      </SyntaxHighlight>
+      <div className="max-w-xl">
+        {data ? (
+          <SyntaxHighlight language="swift" style={darcula} wrapLongLines={true}>
+            {data}
+          </SyntaxHighlight>
+        ) : null}
+      </div>
 
     </main>
   );
