@@ -44,3 +44,8 @@
 body{
   background-color: #1e1e1e;
 }
+
+.pre-code-wrapper {
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+}

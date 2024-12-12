@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { requestToGroqAI } from "./utils/groq";
-import { Light as SyntaxHighlight } from 'react-syntax-highlighter'
-import { darcula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { Light as SyntaxHighlight } from 'react-syntax-highlighter';
+import { darcula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import './App.css';
 
 function App() {
@@ -30,9 +30,13 @@ function App() {
         </button>
       </form>
 
-      <div className="max-w-xl">
+      <div id="theContent" className="max-w-xl">
         {data ? (
-          <SyntaxHighlight language="swift" style={darcula} wrapLongLines={true}>
+          <SyntaxHighlight
+            language="swift"
+            style={darcula}
+            lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
+            wrapLines={true} >
             {data}
           </SyntaxHighlight>
         ) : null}
